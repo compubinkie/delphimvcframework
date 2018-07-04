@@ -6,7 +6,7 @@
 //
 // https://github.com/danieleteti/delphimvcframework
 //
-// Collaborators with this file: Ezequiel Juliano Müller (ezequieljuliano@gmail.com)
+// Collaborators with this file: Ezequiel Juliano MÃ¼ller (ezequieljuliano@gmail.com)
 //
 // ***************************************************************************
 //
@@ -822,7 +822,7 @@ begin
     stDefault, stProperties:
       begin
         for Prop in ObjType.GetProperties do
-          if (Prop.IsWritable or Prop.GetValue(AObject).IsObject) and (not TMVCSerializerHelpful.HasAttribute<MVCDoNotSerializeAttribute>(Prop)) and (not IsIgnoredAttribute(AIgnoredAttributes, Prop.Name)) then
+          if (not TMVCSerializerHelpful.HasAttribute<MVCDoNotSerializeAttribute>(Prop)) and (not IsIgnoredAttribute(AIgnoredAttributes, Prop.Name)) and (Prop.IsWritable or Prop.GetValue(AObject).IsObject) then
           begin
             AttributeValue := Prop.GetValue(AObject);
             JSONDataValueToAttribute(AJsonObject, TMVCSerializerHelpful.GetKeyName(Prop, ObjType), AttributeValue, AType, AIgnoredAttributes, Prop.GetAttributes);
